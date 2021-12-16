@@ -47,7 +47,7 @@ class Ui_Calculator(object):
         self.result_label.setObjectName("result_label")
         self.result_show = QtWidgets.QTextEdit(self.centralwidget)
         self.result_show.setEnabled(False)
-        self.result_show.setGeometry(QtCore.QRect(320, 60, 221, 71))
+        self.result_show.setGeometry(QtCore.QRect(320, 120, 71, 71))
         self.result_show.setObjectName("result_show")
         self.mul_button = QtWidgets.QPushButton(self.centralwidget)
         self.mul_button.setGeometry(QtCore.QRect(160, 90, 31, 31))
@@ -64,6 +64,9 @@ class Ui_Calculator(object):
         self.div_button.setFont(font)
         self.div_button.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         self.div_button.setObjectName("div_button")
+        self.result_lcd = QtWidgets.QLCDNumber(self.centralwidget)
+        self.result_lcd.setGeometry(QtCore.QRect(320, 60, 201, 51))
+        self.result_lcd.setObjectName("result_lcd")
         Calculator.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Calculator)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 573, 22))
@@ -79,13 +82,6 @@ class Ui_Calculator(object):
         self.retranslateUi(Calculator)
         QtCore.QMetaObject.connectSlotsByName(Calculator)
 
-        # Setting handlers
-
-        self.sum_button.clicked.connect(self.sum_handle)
-        self.subtract_button.clicked.connect(self.sub_handle)
-        self.mul_button.clicked.connect(self.mul_handle)
-        self.div_button.clicked.connect(self.div_handle)
-
     def retranslateUi(self, Calculator):
         _translate = QtCore.QCoreApplication.translate
         Calculator.setWindowTitle(_translate("Calculator", "Calculator"))
@@ -94,51 +90,14 @@ class Ui_Calculator(object):
         self.sum_button.setText(_translate("Calculator", "+"))
         self.subtract_button.setText(_translate("Calculator", "-"))
         self.result_label.setText(_translate("Calculator", "Result"))
+        self.result_show.setHtml(_translate("Calculator", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.mul_button.setText(_translate("Calculator", "*"))
         self.div_button.setText(_translate("Calculator", "/"))
         self.menuCalculator.setTitle(_translate("Calculator", "Calculator"))
-
-    def get_inputs(self):
-        try:
-            num1 = int(self.num1_input.text())
-            num2 = int(self.num2_input.text())
-            return num1, num2
-        except ValueError:
-            return 'error'
-
-    def sum_handle(self):
-        data = self.get_inputs()
-        if data != 'error':
-            num1, num2 = data
-            self.result_show.setText(str(num1 + num2))
-        else:
-            self.result_show.setText('Kindly Enter valid input.')
-
-    def sub_handle(self):
-        data = self.get_inputs()
-        if data != 'error':
-            num1, num2 = data
-            self.result_show.setText(str(num1 - num2))
-        else:
-            self.result_show.setText('Kindly Enter valid input.')
-
-    def mul_handle(self):
-        data = self.get_inputs()
-        if data != 'error':
-            num1, num2 = data
-            self.result_show.setText(str(num1 * num2))
-        else:
-            self.result_show.setText('Kindly Enter valid input.')
-
-    def div_handle(self):
-        data = self.get_inputs()
-        if data == 'error':
-            self.result_show.setText('Kindly Enter valid input.')
-        elif data[1] == 0:
-            self.result_show.setText('undefined')
-        else:
-            num1, num2 = data
-            self.result_show.setText(str(num1 / num2))
 
 
 if __name__ == "__main__":
