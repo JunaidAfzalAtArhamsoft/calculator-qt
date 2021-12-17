@@ -5,27 +5,38 @@
   <property name="enabled">
    <bool>true</bool>
   </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>575</width>
+    <height>758</height>
+   </rect>
+  </property>
   <property name="minimumSize">
    <size>
-    <width>589</width>
-    <height>802</height>
+    <width>575</width>
+    <height>758</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>999999</width>
-    <height>16777215</height>
+    <width>575</width>
+    <height>758</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Calculator</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="num1_input">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>190</y>
+      <y>240</y>
       <width>171</width>
       <height>25</height>
      </rect>
@@ -38,7 +49,7 @@
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>220</y>
+      <y>270</y>
       <width>171</width>
       <height>25</height>
      </rect>
@@ -48,7 +59,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>190</y>
+      <y>240</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -61,7 +72,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>220</y>
+      <y>270</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -74,7 +85,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>200</y>
+      <y>290</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -90,15 +101,16 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>230</y>
+      <y>320</y>
       <width>221</width>
       <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>36</pointsize>
+      <pointsize>18</pointsize>
       <weight>75</weight>
+      <italic>true</italic>
       <bold>true</bold>
      </font>
     </property>
@@ -106,8 +118,8 @@
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:36pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:400;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:18pt; font-weight:600; font-style:italic;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="binary_label">
@@ -117,9 +129,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>260</y>
-      <width>271</width>
-      <height>25</height>
+      <y>330</y>
+      <width>201</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -130,35 +142,13 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>320</y>
+      <y>410</y>
       <width>221</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
      <string>-------------------------------------------------</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="clear_button">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>340</y>
-      <width>51</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-      <kerning>true</kerning>
-     </font>
-    </property>
-    <property name="contextMenuPolicy">
-     <enum>Qt::ActionsContextMenu</enum>
-    </property>
-    <property name="text">
-     <string>C</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="numpad_label">
@@ -457,9 +447,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>430</y>
-      <width>271</width>
-      <height>25</height>
+      <y>485</y>
+      <width>201</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -470,9 +460,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>470</y>
-      <width>251</width>
-      <height>221</height>
+      <y>520</y>
+      <width>191</width>
+      <height>171</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -550,8 +540,8 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="mod_button_6">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>10</y>
+       <x>10</x>
+       <y>130</y>
        <width>51</width>
        <height>31</height>
       </rect>
@@ -706,9 +696,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>300</y>
-      <width>251</width>
-      <height>121</height>
+      <y>370</y>
+      <width>191</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -868,9 +858,9 @@ p, li { white-space: pre-wrap; }
    <widget class="QComboBox" name="operations_comboBox">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>130</y>
-      <width>151</width>
+      <x>390</x>
+      <y>220</y>
+      <width>161</width>
       <height>31</height>
      </rect>
     </property>
@@ -888,8 +878,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="operations_label">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>100</y>
+      <x>390</x>
+      <y>190</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -898,13 +888,35 @@ p, li { white-space: pre-wrap; }
      <string>Select Operations type</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="clear_button">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>430</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::ActionsContextMenu</enum>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>589</width>
+     <width>575</width>
      <height>22</height>
     </rect>
    </property>

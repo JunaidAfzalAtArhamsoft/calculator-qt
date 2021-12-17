@@ -9,55 +9,61 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import QLineEdit
+
+
+class ClickableLineEdit(QLineEdit):
+    clicked = pyqtSignal()
+
+    def mousePressEvent(self, event):
+        self.clicked.emit()
+        QLineEdit.mousePressEvent(self, event)
+
 
 class Ui_Calculator(object):
     def setupUi(self, Calculator):
         Calculator.setObjectName("Calculator")
         Calculator.setEnabled(True)
-        Calculator.setMinimumSize(QtCore.QSize(589, 802))
-        Calculator.setMaximumSize(QtCore.QSize(999999, 16777215))
+        Calculator.resize(575, 758)
+        Calculator.setMinimumSize(QtCore.QSize(575, 758))
+        Calculator.setMaximumSize(QtCore.QSize(575, 758))
+        Calculator.setAutoFillBackground(True)
         self.centralwidget = QtWidgets.QWidget(Calculator)
         self.centralwidget.setObjectName("centralwidget")
-        self.num1_input = QtWidgets.QLineEdit(self.centralwidget)
-        self.num1_input.setGeometry(QtCore.QRect(60, 190, 171, 25))
+        self.num1_input = ClickableLineEdit(self.centralwidget)
+        self.num1_input.setGeometry(QtCore.QRect(60, 240, 171, 25))
         self.num1_input.setText("")
         self.num1_input.setObjectName("num1_input")
-        self.num2_input = QtWidgets.QLineEdit(self.centralwidget)
-        self.num2_input.setGeometry(QtCore.QRect(60, 220, 171, 25))
+        self.num2_input = ClickableLineEdit(self.centralwidget)
+        self.num2_input.setGeometry(QtCore.QRect(60, 270, 171, 25))
         self.num2_input.setObjectName("num2_input")
         self.num1_label = QtWidgets.QLabel(self.centralwidget)
-        self.num1_label.setGeometry(QtCore.QRect(30, 190, 67, 17))
+        self.num1_label.setGeometry(QtCore.QRect(30, 240, 67, 17))
         self.num1_label.setObjectName("num1_label")
         self.num2_label = QtWidgets.QLabel(self.centralwidget)
-        self.num2_label.setGeometry(QtCore.QRect(30, 220, 67, 17))
+        self.num2_label.setGeometry(QtCore.QRect(30, 270, 67, 17))
         self.num2_label.setObjectName("num2_label")
         self.result_label = QtWidgets.QLabel(self.centralwidget)
-        self.result_label.setGeometry(QtCore.QRect(330, 200, 67, 17))
+        self.result_label.setGeometry(QtCore.QRect(330, 290, 67, 17))
         self.result_label.setObjectName("result_label")
         self.result_show = QtWidgets.QTextEdit(self.centralwidget)
         self.result_show.setEnabled(False)
-        self.result_show.setGeometry(QtCore.QRect(330, 230, 221, 71))
+        self.result_show.setGeometry(QtCore.QRect(330, 320, 221, 71))
         font = QtGui.QFont()
-        font.setPointSize(36)
+        font.setPointSize(18)
         font.setBold(True)
-        font.setWeight(75)
+        font.setItalic(True)
+        font.setWeight(50)
         self.result_show.setFont(font)
         self.result_show.setObjectName("result_show")
         self.binary_label = QtWidgets.QLineEdit(self.centralwidget)
         self.binary_label.setEnabled(False)
-        self.binary_label.setGeometry(QtCore.QRect(20, 260, 271, 25))
+        self.binary_label.setGeometry(QtCore.QRect(20, 330, 201, 21))
         self.binary_label.setObjectName("binary_label")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(330, 320, 221, 17))
+        self.label.setGeometry(QtCore.QRect(330, 410, 221, 17))
         self.label.setObjectName("label")
-        self.clear_button = QtWidgets.QPushButton(self.centralwidget)
-        self.clear_button.setGeometry(QtCore.QRect(330, 340, 51, 31))
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        font.setKerning(True)
-        self.clear_button.setFont(font)
-        self.clear_button.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
-        self.clear_button.setObjectName("clear_button")
         self.numpad_label = QtWidgets.QLineEdit(self.centralwidget)
         self.numpad_label.setEnabled(False)
         self.numpad_label.setGeometry(QtCore.QRect(350, 480, 221, 25))
@@ -163,10 +169,10 @@ class Ui_Calculator(object):
         self.zero_button.setObjectName("zero_button")
         self.unary_label = QtWidgets.QLineEdit(self.centralwidget)
         self.unary_label.setEnabled(False)
-        self.unary_label.setGeometry(QtCore.QRect(20, 430, 271, 25))
+        self.unary_label.setGeometry(QtCore.QRect(20, 485, 201, 21))
         self.unary_label.setObjectName("unary_label")
         self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(30, 470, 251, 221))
+        self.frame.setGeometry(QtCore.QRect(30, 520, 191, 171))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -195,7 +201,7 @@ class Ui_Calculator(object):
         self.mod_button_5.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         self.mod_button_5.setObjectName("mod_button_5")
         self.mod_button_6 = QtWidgets.QPushButton(self.frame)
-        self.mod_button_6.setGeometry(QtCore.QRect(190, 10, 51, 31))
+        self.mod_button_6.setGeometry(QtCore.QRect(10, 130, 51, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setKerning(True)
@@ -251,7 +257,7 @@ class Ui_Calculator(object):
         self.tanh_button_2.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         self.tanh_button_2.setObjectName("tanh_button_2")
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_2.setGeometry(QtCore.QRect(30, 300, 251, 121))
+        self.frame_2.setGeometry(QtCore.QRect(30, 370, 191, 91))
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
@@ -309,16 +315,24 @@ class Ui_Calculator(object):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.operations_comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.operations_comboBox.setGeometry(QtCore.QRect(200, 130, 151, 31))
+        self.operations_comboBox.setGeometry(QtCore.QRect(390, 220, 161, 31))
         self.operations_comboBox.setObjectName("operations_comboBox")
         self.operations_comboBox.addItem("")
         self.operations_comboBox.addItem("")
         self.operations_label = QtWidgets.QLabel(self.centralwidget)
-        self.operations_label.setGeometry(QtCore.QRect(200, 100, 161, 21))
+        self.operations_label.setGeometry(QtCore.QRect(390, 190, 161, 21))
         self.operations_label.setObjectName("operations_label")
+        self.clear_button = QtWidgets.QPushButton(self.centralwidget)
+        self.clear_button.setGeometry(QtCore.QRect(330, 430, 51, 31))
+        font = QtGui.QFont()
+        font.setPointSize(17)
+        font.setKerning(True)
+        self.clear_button.setFont(font)
+        self.clear_button.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
+        self.clear_button.setObjectName("clear_button")
         Calculator.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Calculator)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 589, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 575, 22))
         self.menubar.setObjectName("menubar")
         self.menuCalculator = QtWidgets.QMenu(self.menubar)
         self.menuCalculator.setObjectName("menuCalculator")
@@ -332,20 +346,16 @@ class Ui_Calculator(object):
         self.retranslateUi(Calculator)
         QtCore.QMetaObject.connectSlotsByName(Calculator)
 
+        self.pointer = True  # if true means head pointed to num1_input
+
     def retranslateUi(self, Calculator):
         _translate = QtCore.QCoreApplication.translate
         Calculator.setWindowTitle(_translate("Calculator", "Calculator"))
         self.num1_label.setText(_translate("Calculator", "X"))
         self.num2_label.setText(_translate("Calculator", "Y"))
         self.result_label.setText(_translate("Calculator", "Result"))
-        self.result_show.setHtml(_translate("Calculator", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:36pt; font-weight:600; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:400;\"><br /></p></body></html>"))
         self.binary_label.setText(_translate("Calculator", "Binary Operations"))
         self.label.setText(_translate("Calculator", "-------------------------------------------------"))
-        self.clear_button.setText(_translate("Calculator", "C"))
         self.numpad_label.setText(_translate("Calculator", "NumPad"))
         self.one_button.setText(_translate("Calculator", "1"))
         self.three_button.setText(_translate("Calculator", "3"))
@@ -380,7 +390,193 @@ class Ui_Calculator(object):
         self.operations_comboBox.setItemText(0, _translate("Calculator", "Binary Operations"))
         self.operations_comboBox.setItemText(1, _translate("Calculator", "Unary Operations"))
         self.operations_label.setText(_translate("Calculator", "Select Operations type"))
+        self.clear_button.setText(_translate("Calculator", "C"))
         self.menuCalculator.setTitle(_translate("Calculator", "Calculator"))
+
+        # register event +, -, /, *, %
+        self.sum_button.clicked.connect(self.sum_handle)
+        self.subtract_button.clicked.connect(self.sub_handle)
+        self.mul_button.clicked.connect(self.mul_handle)
+        self.div_button.clicked.connect(self.div_handle)
+        self.pow_button.clicked.connect(self.pow_handle)
+
+        self.num1_input.clicked.connect(self.pointer1_handle)
+        self.num2_input.clicked.connect(self.pointer2_handle)
+
+        # numpad events
+        self.one_button.clicked.connect(self.one_handle)
+        self.two_button.clicked.connect(self.two_handle)
+        self.three_button.clicked.connect(self.three_handle)
+        self.four_button.clicked.connect(self.four_handle)
+        self.five_button.clicked.connect(self.five_handle)
+        self.six_button.clicked.connect(self.six_handle)
+        self.seven_button.clicked.connect(self.seven_handle)
+        self.eight_button.clicked.connect(self.eight_handle)
+        self.nine_button.clicked.connect(self.nine_handle)
+        self.zero_button.clicked.connect(self.zero_handle)
+        self.dot_button.clicked.connect(self.dot_handle)
+        self.backspace_button.clicked.connect(self.backspace_handle)
+
+        # clear button handler
+        self.clear_button.clicked.connect(self.clear_handle)
+
+    def pointer1_handle(self):
+        print('m is clicked')
+        self.pointer = True
+
+    def pointer2_handle(self):
+        self.pointer = False
+
+    def get_inputs(self):
+        try:
+            num1 = float(self.num1_input.text())
+            num2 = float(self.num2_input.text())
+            return num1, num2
+        except ValueError:
+            return 'error'
+
+    def sum_handle(self):
+        data = self.get_inputs()
+        if data != 'error':
+            num1, num2 = data
+            self.result_show.setText(str(num1 + num2))
+        else:
+            self.result_show.setText('Kindly Enter valid input.')
+
+    def sub_handle(self):
+        data = self.get_inputs()
+        if data != 'error':
+            num1, num2 = data
+            self.result_show.setText(str(num1 - num2))
+        else:
+            self.result_show.setText('Kindly Enter valid input.')
+
+    def mul_handle(self):
+        data = self.get_inputs()
+        if data != 'error':
+            num1, num2 = data
+            self.result_show.setText(str(num1 * num2))
+        else:
+            self.result_show.setText('Kindly Enter valid input.')
+
+    def div_handle(self):
+        data = self.get_inputs()
+        if data == 'error':
+            self.result_show.setText('Kindly Enter valid input.')
+        elif data[1] == 0:
+            self.result_show.setText('undefined')
+        else:
+            num1, num2 = data
+            self.result_show.setText(str(num1 / num2))
+
+    def one_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(1))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(1))
+
+    def two_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(2))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(2))
+
+    def three_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(3))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(3))
+
+    def four_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(4))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(4))
+
+    def five_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(5))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(5))
+
+    def six_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(6))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(6))
+
+    def seven_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(7))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(7))
+
+    def eight_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(8))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(8))
+
+    def nine_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(9))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(9))
+
+    def zero_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + str(0))
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + str(0))
+
+    def dot_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text + '.')
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text + '.')
+
+    def backspace_handle(self):
+        if self.pointer:
+            text = self.num1_input.text()
+            self.num1_input.setText(text[:-1])
+        else:
+            text = self.num2_input.text()
+            self.num2_input.setText(text[:-1])
+
+    def pow_handle(self):
+        x = float(self.num1_input.text())
+        y = float(self.num2_input.text())
+        try:
+            self.result_show.setText(str(x**y))
+        except OverflowError:
+            self.result_show.setText('Overflow')
+
+    def clear_handle(self):
+        self.result_show.clear()
+        self.num1_input.clear()
+        self.num2_input.clear()
 
 
 if __name__ == "__main__":
